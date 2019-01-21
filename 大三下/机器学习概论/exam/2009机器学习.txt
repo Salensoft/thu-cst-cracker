@@ -1,0 +1,15 @@
+1(6+10')、什么是过拟合? 决策树实验, A1, A2. A1中tree size大于A2, training data精度大于A2, 但testing data上精度小于A2, 请分析这个现象。
+
+2(6+10')、什么是VC维? 求三维空间点集, 假设集为球体的VC维，并给出说明/证明。
+
+3(10' * 4)、集成学习
+  a) 给出bagging和boosting的两个相同和两个不同点
+  b) 如果decision tree和KNN分别用集成学习, 哪个效果更好，并给分析
+  c) 要测试上述两种方法, 设计一测试方法
+  d) 推导Weight Majority Algorithm的ErrorBound，给定beta
+
+4(8')、07年期末第三题。
+
+5(10' * 2)、给了5个数据, 2个离散变量, 一个连续值变量
+  a) 问哪个属性区分度最好
+  b) 给定另外一个数据，用Naive 贝叶斯分类器 分类之。

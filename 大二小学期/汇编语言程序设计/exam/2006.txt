@@ -1,0 +1,106 @@
+寄信人: honest (honest)
+标  题: 2006汇编期中
+发信站: 酒井BBS (Mon Nov  6 12:54:44 2006)
+来  源: 59.66.130.91
+
+【 以下文字转载自 honest 的信箱 】
+寄信人: CAQ (戒网中，还有12天||推箱子！)
+标  题: 2006汇编期中
+发信站: 酒井BBS (Mon Nov  6 12:30:19 2006)
+来  源: 59.66.130.90
+
+//注：实际满分是98分-_-b
+
+期 中 考 查
+2006-11-06
+请注意：满分100分，时间90分钟，答案全部写在试卷上。
+一、填空（每空2分）
+1．写出操作码不同的四条指令，它们均使(BX)=0。
+2．十六进制运算0FEDCH-0ADH=_____H，7AH×6EH=_____H。
+3．已知[X]补=0089H，[Y]补=0FF6BH，则[X+Y]补=_____H，[X-Y]补=_____H。
+4．物理地址10000H到物理地址_____H之间的存储空间有8K，物理地址D0000H到物理地址
+EFFFFH之间的存储空间有_____K。
+5．假设(BX)=8068H，当指令序列MOV CL,3  SAR BX,CL执行完毕后，(BX)=_____H，
+CF=_____。
+6．假设(DX)=5678H，(AX)=0，当指令序列 NEG DX   NEG AX   SBB DX,0执行完毕后，
+(DX)=_____H，(AX)=_____H；如果(DX)=8000H，(AX)=5678H，上述指令序列执行完毕后，
+(DX)=_____H，(AX)=_____H。
+7．(AX),(BX)为带符号数，若(AX)>(BX)，则指令CMP AX,BX执行后SF=_____，OF=_____；或
+SF=_____,OF=_____。
+
+二、假设(DS)=(SS)=2000H, (ES)=3000H, (SP)=0A200H, (DI)=0204H, (AX)=9E90H,
+(BX)=0214H, (30214H)=2400H, (20214H)=1800H, (20216H)=8900H, (2A200H)=100H, 写出
+下列各条指令单独执行后，受到影响的寄存器或存储单元的内容（不用写标志位）（每题3
+分）
+1．CWD
+2．XOR AX, 1236H
+3．SUB ES:[BX], AX
+4．NEG WORD PTR [DI+12H]
+5．POP CX
+
+三、假设(cs)=12EAH，(ds)=12A2H，(es)=12C2H，(ss)=12E2H，(sp)=80H，(bx)=100H，
+(si)=1，(12B22H)=5，(12B23H)=0，(12B24H)=102H，(12B40H)=4321H，(12B46H)=5678H，
+(12D20H)=120H，执行下面程序段，填空回答问题（每空1分）
+    mov  bp, 128
+    push es:[bx]      ; 此条指令执行完后，(sp)=_____H
+    mov  di, 3[bx][si]
+    dec  si
+    inc  byte ptr[di] ; 操作数的物理地址=_____H
+    mov  ax, [di]
+    add  -2[bp], ax   ; 目的操作数的有效地址=_____H
+    pop  bx
+    mov  ax, [bx][si]
+    neg  ax           ; 此条指令执行完后，(ax)=_____H  cf=_____  of=_____
+    rcr  ax, 1        ; 此条指令执行完后，(ax)=_____H
+    jmp  word ptr[di] ; 此条指令执行完后，(cs)=_____H  (ip)=_____H
+
+四、写出以下程序都完成了什么功能？（每题5分）
+(1) ...
+    mov cl, 8
+    ror dx, cl
+    shr ax, cl
+    xchg dh, ah
+    rcl ax, 1
+    rcl dx, 1
+    ...
+
+(2) ...
+    xor bx, bx
+    mov ax, num
+    mov cx, 1
+next:
+    sub ax, cx
+    jb exit
+    inc bx
+    add cx, 2
+    jmp next
+exit:
+    ...
+num是个字单元，存了一个数。
+
+(3) ...
+    mov cx, count
+    mov si, offset string
+    xor bx, bx
+    mov al, 20h
+again:
+    cmp al, es:[si]
+    jnz next
+    inc bx
+next:
+    inc si
+    loop again
+    mov result, bx
+string是长度为count的字符串的首地址。result是一个字单元。
+
+五、你对本课程的意见、建议（10分）
+
+
+---—-—-----—-—————--—————-—-—-—---
+╔╦╦═╗╔╦╦═╗╔╦╦═╗
+╠╬╣    ╠╬╣  ║╠╬╣  ║
+╠╬╣    ╠╬╬═╣╠╬╣╗║
+╠╬╣    ╠╬╣  ║╠╬╣╚╗
+╚╩╩═╝╚╩╝  ╝╚╩╩═╝
+03
+[阅读精华区资料]  结束 Q,← │ 上一项资料 U,↑│ 下一项资料 <Enter>,<Space>,↓

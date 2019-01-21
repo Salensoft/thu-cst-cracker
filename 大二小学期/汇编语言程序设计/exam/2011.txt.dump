@@ -1,0 +1,67 @@
+发信人: SamDivine (梦梦), 信区: e_note
+标  题: 2011年汇编考试题目
+发信站: 酒井BBS (Sat Sep 10 00:33:25 2011), 转信
+
+一、
+能够记得的是：
+1：已知（ax）< （bx），ax和bx都是有符号数，cmp ax， bx后sf=______，of=_______
+2：int指令执行后，________依次入栈，标志位______和______被置零
+3：mov  al, 20h和out    20h ,al的性质和作用（选择）
+（题号不对应，总共7道，上述为个人感觉比较变态的题目）
+
+二、简答题
+1、简要分析一段程序，并写出cmovg的好处
+2、补充汇编出的AT&T代码
+原代码：
+int arith
+  (int x, int y, int z)
+{
+  int t1 = x+y;
+  int t2 = z+t1;
+  int t3 = x+4;
+  int t4 = y * 48;
+  int t5 = t3 + t4;
+  int rval = t2 * t5;
+  return rval;
+}
+待补充代码：
+        movl 8(%ebp),%eax       # eax = x
+        movl 12(%ebp),%edx      # edx = y
+        leal (%edx,%eax),%ecx   # ecx = x+y  (t1)
+        leal (%edx,%edx,2),%edx # edx = 3*y
+        sall $4,%edx            # edx = 48*y (t4)
+        addl 16(%ebp),%ecx      # ecx = z+t1 (t2)
+        leal 4(%edx,%eax),%eax  # eax = 4+t4+x (t5)
+        imull %ecx,%eax         # eax = t5*t2 (rval)
+考试时把待补充代码的注释删除了，并挖去了几个空
+3、写指令单独执行后寄存器或存储单元的变化。指令主要为mov、计算和pop指令，共5条。
+
+三、
+1、写求绝对值的宏和和宏展开
+
+2、关于基址变址比例相对变址进行阅读理解并仿照样例写程序
+
+3、第一问，c1.asm, c2.asm, c3.asm的前两行挖掉，让填
+第二问，程序功能？
+第三问，用于汇编这三个文件的命令，用于连接这三个文件的命令，用于运行得到的可执行
+文件的命令？
+三段代码见附件
+
+---—-—-----—-—————--—————-—-—-—---
+                    ▂▅█                         ▂▅█
+                ▃▆███                     ▃▆███
+          ▂▅██████               ▂▅██████
+    ▂▅█████████           ▃▆████████
+▃▆█████  █████     ▂▅███████████
+这样一看，答案就更明显了~~~
+
+
+※ 来源:·酒井BBS bbs.net9.org·[FROM: 59.66.131.80]
+附件: c1.asm (0.35 KB) 链接:
+http://bbstel.net9.org:81/bbscon.php?b=xattach&f=d961d3bf6fe47e1f&a=1917
+附件: c2.asm (0.15 KB) 链接:
+http://bbstel.net9.org:81/bbscon.php?b=xattach&f=d961d3bf6fe47e1f&a=2291
+附件: c3.asm (0.15 KB) 链接:
+http://bbstel.net9.org:81/bbscon.php?b=xattach&f=d961d3bf6fe47e1f&a=2466
+全文链接：http://bbstel.net9.org:81/bbscon.php?b=xattach&f=d961d3bf6fe47e1f
+[阅读精华区资料]  结束 Q,← │ 上一项资料 U,↑│ 下一项资料 <Enter>,<Space>,↓

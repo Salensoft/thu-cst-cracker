@@ -1,0 +1,102 @@
+发信人: Banny (雨後楓), 信区: e_note
+标  题: 2005汇编期中考查
+发信站: 酒井BBS (Wed Dec 28 20:32:33 2005), 转信
+
+毛老师传到网络学堂上的，也许对以后的同学有所帮助。
+
+期 中 考 查
+2005-11-09
+请注意：满分50分，时间60分钟，答案全部写在试卷上。
+一、    填空（每空1分）
+1．     写出操作码不同的四条指令，它们均使(BX)=0。
+mov bx,0    sub bx,bx    and bx,0    xor bx,bx
+2．     十六进制运算0FEDCH－0ABH= 0fe31  H，7AH×6FH=  34e6  H。
+    3．如果两个变量的取值为X=00FAH，Y=1239H，则X∨ Y=  12fb   H，X?Y=  12c3   H
+。
+4．已知[X]补＝0089H，[Y]补＝0FF6BH，则[X+Y]补＝ 0fff4  H，[X-Y]补＝ 11e  H。
+5．物理地址30000H到物理地址 31fff H之间的存储空间有8K，物理地址C0000H到物理地址
+EFFFFH之间的存储空间有   192   K。
+6．假设(BX)=9069H，当指令序列MOV CL,3  SAR BX,CL执行完毕后，(BX)=0f20dH，CF=0。
+7．假设(DX)=1234H，(AX)=0，当指令序列 NEG DX   NEG AX   SBB DX,0执行完毕后，
+   (DX)= 0edcc H，(AX)= 0     H；如果(DX)=8000H，(AX)=1234H，上述指令序列
+执行完毕后，(DX)= 7fff  H，(AX)= 0edcc  H。
+8．     (AX),(BX)为带符号数，若(AX)>(BX)，则指令CMP AX,BX执行后SF= 0 ，OF= 0 。
+                                                                 或SF=1,OF=1。
+二、    假设 (DS)=(SS)=2000H, (ES)=3000H, (SP)=0A200H, (DI)=0204H, (AX)=9E90H,
+(BX)=0214H,(30214H)=2400H,(20214H)=1800H,(20216H)=8900H, (2A200H)=100H,
+写出下列各条指令单独执行后，受到影响的寄存器或存储单元的内容（不用写标志位）（每
+题2分）
+1．     CWD    (DX)=0ffffH
+
+
+2．     XOR  AX, 1236H    (AX)=8ca6H
+
+
+3．     SUB  ES:[BX], AX     (30214H)=8570H
+
+
+4．     NEG  WORD PTR [DI+12H]    (20216H)=7700H
+
+
+5．     POP  CX      (CX)=100H   (SP)=0a202H
+
+
+三、假设 (cs)=12EAH，(ds)=12A2H，(es)=12C2H，(ss)=12E2H，(sp)=80H，(bx)=100H，
+(si)=1，
+(12B22H)=5，(12B23H)=0，(12B24H)=102H，(12B40H)=4321H，(12B46H)=5678H，
+(12D20H)=120H，
+执行下面程序段，填空回答问题（每空1分）
+
+        mov   bp, 128
+         push  es:[bx]              ; 此条指令执行完后，(sp)= __7e__ H
+         mov   di, 3[bx][si]
+         dec   si
+         inc   byte ptr[di]        ; 操作数的物理地址= _12b22_ H
+         mov   ax, [di]
+         add   -2[bp], ax          ; 目的操作数的有效地址= _7e_ H
+   pop   bx
+mov   ax, [bx][si]
+neg   ax                   ; 此条指令执行完后，(ax)= _0a988_ H     cf= _1_
+of= _0_
+rcr   ax, 1               ; 此条指令执行完后，(ax)= _0d4c4_ H
+jmp   word ptr[di]       ; 此条指令执行完后，(cs)= _12ea_ H     (ip)= _6_ H
+
+四、根据虚框中的数据定义，执行下面程序段，填空回答问题（每空1分）
+
+ORG          100H
+VARW     DW          1234, 5678H
+VARB     DB          'HELLO'
+                 ALIGN   4
+VARD     DD              VARB-VARW
+                 EVEN
+BUFB     LABEL   BYTE
+BUFW     DW          5  DUP (2, 3 DUP(0))
+CNT      EQU     $-BUFB
+
+LEA       SI,    VARB                                                 ;  (SI) =
+  104  H
+MOV       BX,    [SI+0AH]                                             ;  (BX) =
+   0   H
+MOV       AH,    [BX+256]                                          ;  (AH) =
+0d2   H
+MOV       DI,    CNT SHR 4                                            ;  (DI) =
+  2   H
+MOV       AL,    VARB[DI]                                             ;  (AL) =
+  4c   H
+OR        VARW, AX
+;(VARW) =   0d6de   H
+MOV     BX,    LENGTH BUFW + OFFSET BUFW + 1000H      ;  (BX) =    1115    H
+JMP       BX
+;  (IP) =    1115   H
+
+五、你对本课程的意见、建议（3分）
+
+---—-—-----—-—————--—————-—-—-—---
+患 海 叢 生 雨 後 楓
+悲 涼 初 現 月 下 薔
+相 逢 難 匿 沉 香 露
+醉 酒 喜 逢 夢 孤 楊
+
+
+※ 来源:·酒井BBS bbs.net9.org·[FROM: 166.111.210.92]
+[阅读精华区资料]  结束 Q,← │ 上一项资料 U,↑│ 下一项资料 <Enter>,<Space>,↓

@@ -1,0 +1,202 @@
+发信人: lizhao (     ), 信区: e_note
+标  题: Re: 汇编2003(A)
+发信站: 酒井BBS (Fri Sep  5 15:01:34 2003), 转信
+
+感谢omg,celts
+
+考试时间：2003.9.5 8:30-10:45
+任课老师：温冬婵
+
+一、 有四条指令
+(1)MOV AL, [BX+SI+1A0H]
+(2)MOV AL, 80H[BX][DI]
+(3)MOV AL, [BP+SI-0A0H]
+(4)MOV AL, [BP]
+其中，(DS)=0930H,(SS)=0915H,(SI) = 0A0H, (DI)=1C0H, (BX)=80H,(BP)=740H
+问在AL中获得相同结果的指令有_______。
+
+二、下面有关中断的论述中正确的是_______。
+(1) 中断类型号是存放相应的中断向量的双字单元的首地址。
+(2) INT指令引起的中断是内中断，而像键盘输入、显示器输出、掉电、除0出错引起的
+中断等则是外中断。
+(3) CPU能否响应键盘中断的唯一条件是键盘的中断屏蔽位为0。
+(4) 中断发生时，CPU将IF和TF置0。
+(5) INT 3的中断优先级比INT 21H的优先级高。
+
+三、下面程序段执行完毕时，(AL)=____, CF为___, OF为___, SF为___, PF为___。
+XOR AL, AL
+DEC AL
+ADD AL, -128
+INC AL
+NEG AL
+NOT AL
+RCL AL, 1
+
+四、下面子程序每秒被调用一次，对存储单元HOUR,MIN,SEC的当前值予以更新处理。秒
+、分均为60进制，小时为24进制。三者的递增和复零均有公共子程序ADDONE进行。请完成
+下面的程序。
+UPDATE PROC NEAR
+  push ax
+  push bx
+  mov ah, (1)_____
+  lea bx, (2)_____
+  call ADDONE
+  (3)________
+  (4)________
+  call ADDONE
+  (5)________
+  mov ah, (6)_____
+  lea bx, (7)_____
+  call ADDONE
+exit:
+  pop bx
+  pop ax
+  ret
+UPDATE ENDP
+;
+ADDONE PROC NEAR
+  (8)________
+  cmp ah, [bx]
+  je  addok
+  mov al, [bx]
+  inc al
+addok:
+  mov [bx], al
+  ret
+ADDONE ENDP
+;
+在数据段中
+HOUR db 0
+MIN  db 0
+SEC  db 0
+
+五、下面程序将地址A开始的N个字依次移动到地址B开始的N个字， 对于两个区域互相重
+叠的情况也能正确的处理。有关参数的存放形式如下：
+        BX　+0   A
+            +2   B
+            +4   N
+请完成下面的程序。
+MOVEMENT PROC NEAR
+  mov di, 2[bx]
+  mov si, 0[bx]
+  cmp si, di
+  je exit
+  ______
+  ______
+  jmp save
+islt:
+  -------------------
+  |                 |
+  |                 |
+  |                 |
+  |                 |
+  |              　 |
+  |                 |
+  |                 |
+  |                 |
+  -------------------
+save:
+  mov cx, 4[bx]
+rotate:
+  mov bx, [si]
+  mov [di], bx
+  add si, ax
+  add di, ax
+  loop rotate
+exit:
+  ret
+MOVEMENT ENDP
+
+六、下列程序对字节数组DAT的元素进行计算，请分析程序并回答问题
+DSEG SEGMENT
+  DAT DB 5, 13, 4, -2, 6, 23, 44, -1, 29, -3
+  CNT DW $-DAT
+DSEG ENDS
+SSEG SEGMENT
+  DB 256 DUP (?)
+SSEG ENDS
+CSEG SEGMENT
+  ASSUME CS:CSEG,DS:DSEG,SS:SSEG
+START PROC FAR
+  PUSH DS
+  XOR AX,AX
+  PUSH AX
+  MOV AX,DSEG
+  MOV DS,AX
+  XOR AX,AX
+  MOV BX,OFFSET DAT
+  MOV CX,CNT
+LP:
+  SAL [BX],1
+  JC  NEXT
+  INC AH
+  ADD AL,[BX]
+NEXT:
+  INC BX
+  LOOP LP
+  RET
+START ENDP
+CSEG ENDS
+  END START
+问：
+(1)上列程序中有一条语句有语法错误，这条语句正确的应是_________________。
+(2)程序执行完后，(AX)=______H。
+(3)程序中的JC NEXT改为JNC NEXT，则(AX)=______H。
+
+七、现有程序如下，主程序存放在段地址为18F4H的代码段中，请将程序运行到(1),(2)
+,(3),(4),(5),(6)处时的堆栈的情况填入空格中，未知的内容可以用符号明来表示。
+CODE1 SEGMENT
+START:
+  ...
+  MOV AX, 18E4H
+  MOV SS, AX
+  MOV SP, 40H           ;(1)
+  ...
+  PUSH AX
+  PUSH BX               ;(2)
+  CALL FAR PTR SUBP1    ;(3)
+BACK1:
+  ......
+  ......
+CODE1 ENDS
+;----------------------------
+CODE2 SEGMENT
+SUBP1 PROC FAR
+  ......
+  CALL NEAR PTR SUBP2   ;(4)
+BACK2:
+  ......
+  RET 4                 ;(6)
+SUBP1 ENDP
+;----------------------------
+SUBP2 PROC NEAR
+  ......
+  RET                   ;(5)
+SUBP2 ENDP
+CODE2 ENDS
+END START
+列表如下：
+物理地址  内容    内容    内容    内容    内容    内容
+________ ______  ______  ______  ______  ______  ______
+________ ______  ______  ______  ______  ______  ______
+________ ______  ______  ______  ______  ______  ______
+________ ______  ______  ______  ______  ______  ______
+________ ______  ______  ______  ______  ______  ______
+________ ______  ______  ______  ______  ______  ______
+________ ______  ______  ______  ______  ______  ______
+SP  =    ______  ______  ______  ______  ______  ______
+          (1)      (2)     (3)     (4)    (5)     (6)
+
+八、某程序用一字节变量DATA_FLAG的值表示操作数类型，DATA_FLAG为0，表示操作数是
+无符号数;为1,表示操作数是带符号数;为其他数值无效(不执行宏功能)。请定义宏指令
+IERP分别对无符号数或带符号数实现乘或除的功能。然后展开以下宏调用:
+IERP 2, L, AX; (AX)*4
+IERP 4, R, DX; (DX)/16
+
+
+
+---—-—-----—-—————--—————-—-—-—---
+
+※ 修改:·lizhao 于 Sep  5 15:21:44 修改本文·[FROM: 166.111.242.216]
+※ 来源:·酒井BBS bbs.net9.org·[FROM: 166.111.242.216]
+[阅读精华区资料]  结束 Q,← │ 上一项资料 U,↑│ 下一项资料 <Enter>,<Space>,↓

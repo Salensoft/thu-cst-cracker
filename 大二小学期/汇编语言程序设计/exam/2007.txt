@@ -1,0 +1,92 @@
+发信人: Gentoo (晕乎乎……), 信区: e_note
+标  题: Re: 07汇编
+发信站: 酒井BBS (Tue Jan 16 13:43:24 2007), 转信
+
+
+1.大概是下面这个样子的程序，要求分析第二次运行到(1)时的of和cf，还有第二次运行到
+(2)时的cf，还有前两次生成的cx
+        mov si,10
+        mov di,140h
+L1:     add di,9248h    (1)
+        mov cx,3
+        ror di,cx       (2)
+        mov cx,di
+        and cx,1FFH
+        or  cx,10H
+        loop L1
+
+3.双精度数(X+2,X)求绝对值的一个宏,填空补充完整,并给出一个宏调用,要求做宏展开.
+
+absol macro a, b
+      __________
+      mov ax, word ptr a
+      mov dx, word ptr a&+2
+      test ax, _____
+      __________
+      neg ______
+      neg ______
+      __________
+save:             ;这个标号我不记得叫什么了
+      mov word ptr b, ___
+      mov word ptr a, ___
+      __________
+
+4.大概是跟下面这个程序差不多吧，主要就是考栈传参
+data    segment
+        count   dw      10
+        arr     dw      xx,1000h,xx,...,65535,xxx,0
+data    ends
+
+code    segment
+main    proc    far
+        push    ds
+        xor     ax,ax
+        push    ax
+        mov     ax,data
+        mov     ds,ax
+        mov     cx,count
+        lea     bx,arr
+L1:     push    [bx]
+        add     bx,2
+        loop    L1
+        mov     cx,count
+        push    cx
+        call    subp
+        ret
+main    endp
+subp    proc    near            ; B卷好像是far
+        push    bp
+        mov     bp,sp
+        mov     cx,[bp+__]
+        mov     ax,[bp+__]
+L2:     add     bp,2
+        cmp     ax,[bp+__]
+        jge     L3
+        mov     ax,[bp+__]
+L3:     loop    L2
+        pop     bp
+        ret
+subp    endp
+code    ends
+        end     start
+
+5.调用几个子函数，包括直接调用，设置中断向量再通过中断调用，设置栈然后用ret，还
+有直接jmp到函数内部，最后要求分析两个变量X，Y的置和过程中几个堆栈的情况。
+
+6.输入一个十进制的字符串,以及一个M,要求在字符串中删去M位,使剩下的字符串表示的数
+最小. 高位的'0'要去掉. 写出完整的程序.
+
+
+
+
+
+---—-—-----—-—————--—————-—-—-—---
+=>wheat       (Mon Jun  5 23:17)
+(QTerm) Sorry, I am not around
+wheat         (Mon Jun  5 23:18)
+(QTerm) Sorry, I am not around
+
+
+※ 修改:·Gentoo 于 Jan 16 13:49:25 修改本文·[FROM: 59.66.130.40]
+※ 来源:·酒井BBS bbs.net9.org·[FROM: 59.66.130.40]
+[阅读精华区资料]  结束 Q,← │ 上一项资料 U,↑│ 下一项资料 <Enter>,<Space>,↓

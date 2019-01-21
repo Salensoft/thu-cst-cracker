@@ -1,0 +1,63 @@
+发信人: cyexpress (夏天，附小), 信区: e_note
+标  题: 汇编课堂小测三（2004.8）
+发信站: 酒井BBS (Mon Sep 13 20:17:17 2004), 转信
+
+汇编课堂小测三：
+
+1．     假设（AX）= 2000H，（BX）= 1200H，（SI）= 0002H，（DS）= 3000H，（
+31200H）= 50H，（31201H）= 02H，（31202H）= 0F7H。请写出下列各条指令执行后，相关
+寄存器或存储单元的内容。
+（1）   ADD  AX,  1200H
+（2）   XLAT
+（3）   SAR  BYTE PTR [SI+1200H],  1
+（4）   JMP  WORD PTR [BX]
+（5）   LEA  BX,  [BX+SI]
+
+2．     已知下列程序段：
+ADD  AL,  BL         |      JO    L3
+JO    L1             |      JB    L4
+JC    L2             |      JMP   L5
+CMP  AH,  BH         |
+若给定AX和BX的值如下，说明程序的转向：
+（1）（AX）=3F23H,  （BX）=50D0H
+（2）（AX）=A042H,  （BX）=0F3DH
+
+3．下列程序的功能是从键盘输入一串字符并回显在下一行，如：
+        键盘输入：ABCDE（回车）
+        回显：    ABCDE
+        请指出程序中的错误，并改正之。
+        DATA    SEGMENT                |  MOV    BX,     LEN
+MAX     DB      10                     |  MOV    AL,    ‘$’
+LEN     DB      ?                      |  MOV    STRING[BX],      AL
+STRING  DB      10      DUP(0)         |  MOV    DX,     STRING
+DATE    ENDS                           |  MOV    AH,      9
+CODE    SEGMENT                        |  INT    21H
+MAIN    PROC    NEAR                   |  MOV    AH,      4C00H
+START:  MOV     DS,     DATA           |  INT    21H
+LEA     DX,     STRING                 |  MAIN        END
+MOV     AH,     0AH                    |  CODE        END
+INT     21H                            |              END  MAIN
+
+4．     下面的程序段执行完毕时，（AL）= ？，CF为？，SF为？。
+XOR             AL,     AL          |    NEG        AL
+DEC             AL                  |    NOT        AL
+ADD             AL,     -128        |    ROL        AL,     1
+INC             AL
+
+5．     已知堆栈段寄存器SS的内容是0F0A0H，堆栈指针SP的内容是00B0H，先执行两条
+PUSH指令把8057H和0F79H分别入栈，然后执行一条POP指令，试填出堆栈的初始状态以及每
+条指令执行后，堆栈的物理地址，堆栈内容以及SP内容的变化。
+堆栈地址     堆栈字单元      堆栈字单元      堆栈字单元      堆栈字单元
+（    ）     ________        ________        ________        ________
+（    ）     ________        ________        ________        ________
+（    ）     ________        ________        ________        ________
+（    ）     ________        ________        ________        ________
+     SP      ________        ________        ________        ________
+             初始状态        PUSH            PUSH            POP
+
+---—-—-----—-—————--—————-—-—-—---
+当你熟悉了紫光，我也熟悉了微软：）
+
+
+※ 来源:·酒井BBS bbs.net9.org·[FROM: 219.224.155.190]
+[阅读精华区资料]  结束 Q,← │ 上一项资料 U,↑│ 下一项资料 <Enter>,<Space>,↓

@@ -1,0 +1,78 @@
+发信人: shyx (？), 信区: e_note
+标  题: 汇编第二题
+发信站: 酒井BBS (Tue Jun 20 21:14:07 2000), 转信
+
+我记得大概是这样的(A卷):
+写出下面程序执行到(1),(2),(3)处时的堆栈内容，以及程序结束时x与y的值。
+
+data segment
+     x dw 0
+     y dw 1
+     z dw s3
+data ends
+stack segment
+     stackdata dw 100h dup (?)
+     top dw 100h
+stack ends
+code segment
+     assume cs:code,ds:data,ss:stack
+main proc far
+     mov ax,stack
+     mov ss,ax
+     mov sp,top
+     push ds
+     push cs
+     pop ds
+     mov dx,s1
+     mov ax,257Eh
+     int 21h
+     mov ax,0
+     push ax
+     mov ax,data
+     mov ds,ax
+     call s2           ..... (1)
+next1:
+     cmp x,1
+     jne next
+     int 7Eh           ..... (2)
+next2:
+     ret
+main endp
+s1 proc far
+     mov bx,x
+     add y,bx
+     cmp y,1
+     jle back1
+     push cs
+     mov ax,s2
+     push ax           ..... (3)
+     ret
+back1:
+     ret 2
+s1 endp
+s2 proc far
+     inc x
+     cmp y,1
+     je back2
+     mov bx,4
+     jmp x[bx]
+back2:
+     ret
+s2 endp
+s3 proc far
+     inc x
+     inc y
+     ret 2
+s3 endp
+code ends
+end main
+---—-—-----—-—————--—————-—-—-—---
+   One's own past is a gradually increasing weight.
+   It is easy to think to oneself that one's emotions used to be
+more vivid than they are, and one's mind more keen.
+   If this is true it should be forgotten, and if it is forgotten
+it will probably not be true.
+
+※ 修改:．shyx 于 Jun 20 21:25:01 修改本文．[FROM: 10.9.31.71]
+※ 来源:．酒井BBS bbs.9net.edu．[FROM: 10.9.31.71]
+[阅读精华区资料]  结束 Q,← │ 上一项资料 U,↑│ 下一项资料 <Enter>,<Space>,↓

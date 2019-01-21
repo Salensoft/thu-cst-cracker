@@ -1,0 +1,226 @@
+发信人: DragonCat (龙猫), 信区: e_note
+标  题: tcp的9个问题
+发信站: 酒井BBS (Tue Jun 15 22:10:57 1999), 转信
+ 　 　　　　 　 　  　　　　   　　 　       　
+ 　 　　　　 　 　  　　　　   　　 　       　
+ 　 　　　　 　 　  　　　　   　　 　       　
+    很多东西我都不大懂，把教材和rfc抄了一些，其他的有些是我的理解，
+不一定对，大家来更正一下吧。
+ 　 　　　　 　 　  　　　　   　　 　       　
+以下所用的函数是xinu 中的函数。
+ 　 　　　　 　 　  　　　　   　　 　       　
+1 tcp有几个进程，每个进程起什么功能
+       tcp本身有三个进程，分别为tcpin(输入处理),tcpout(输出处理),
+   tcptimer(定时器管理)。tcpin 处理从ip 层送来的报文段；tcptimer
+   管理一个时钟队列，为重发、探询（PERSIST）、捎带确认（DELACK）
+   进行计时，另外，当TCP关闭后，也要设置一个时延，让双方释放TCB；
+   tcpout 进程处理输出，它接受定时器和输入进程传递过来的消息，执行
+   相应的输出事件，所有数据都通过它发到ip层。
+       总体上说，这些进程都是事件驱动的。驱动的来源包括下层（ip）和
+   上层（应用程序）。
+ 　 　　　　 　 　  　　　　   　　 　       　
+2 tcp的工作过程，输入进程的状态机
+   tcp的工作过程（偶不大明白什么是工作过程）：
+        tcpinp 当收到一个ip分组时，先验证校验和（tcpcksum），
+   然后用tcpdemux为当前分组找到正确的TCB（注，一个TCB对应一个连接），
+   接下来用tcpok验证对当前窗口来说该报问段是否可接受，最后利用数组
+   tcpswitch（注：tcpswitch为函数的数组，见 tcpswitch.c）为当前输入
+   状态选择一个对应的过程。在各个过程中，一般要处理确认，接受新数据，
+   提出发送ACK请求，并转入新的状态。
+        tcptimer 检查当前是否有timeout，如有，将事件传到tcpout。
+        tcpout 接受输入进程和定时器进程发送过来的消息，转入相应的事件
+   处理。
+
+   输入进程的状态机见教材p410（中文版）。
+   以下是rfc中的图形：
+
+
+                              +---------+ ---------\      active OPEN
+                              |  CLOSED |            \    -----------
+                              +---------+<---------\   \   create TCB
+                                |     ^              \   \  snd SYN
+                   passive OPEN |     |   CLOSE        \   \
+                   ------------ |     | ----------       \   \
+                    create TCB  |     | delete TCB         \   \
+                                V     |                      \   \
+                              +---------+            CLOSE    |    \
+                              |  LISTEN |          ---------- |     |
+                              +---------+          delete TCB |     |
+                   rcv SYN      |     |     SEND              |     |
+                  -----------   |     |    -------            |     V
+ +---------+      snd SYN,ACK  /       \   snd SYN          +---------+
+ |         |<-----------------           ------------------>|         |
+ |   SYN   |                    rcv SYN                     |   SYN   |
+ |   RCVD  |<-----------------------------------------------|   SENT  |
+ |         |                    snd ACK                     |         |
+ |         |------------------           -------------------|         |
+ +---------+   rcv ACK of SYN  \       /  rcv SYN,ACK       +---------+
+   |           --------------   |     |   -----------
+   |                  x         |     |     snd ACK
+   |                            V     V
+   |  CLOSE                   +---------+
+   | -------                  |  ESTAB  |
+   | snd FIN                  +---------+
+   |                   CLOSE    |     |    rcv FIN
+   V                  -------   |     |    -------
+ +---------+          snd FIN  /       \   snd ACK          +---------+
+ |  FIN    |<-----------------           ------------------>|  CLOSE  |
+ | WAIT-1  |------------------                              |   WAIT  |
+ +---------+          rcv FIN  \                            +---------+
+   | rcv ACK of FIN   -------   |                            CLOSE  |
+   | --------------   snd ACK   |                           ------- |
+   V        x                   V                           snd FIN V
+ +---------+                  +---------+                   +---------+
+ |FINWAIT-2|                  | CLOSING |                   | LAST-ACK|
+ +---------+                  +---------+                   +---------+
+   |                rcv ACK of FIN |                 rcv ACK of FIN |
+   |  rcv FIN       -------------- |    Timeout=2MSL -------------- |
+   |  -------              x       V    ------------        x       V
+    \ snd ACK                 +---------+delete TCB         +---------+
+     ------------------------>|TIME WAIT|------------------>| CLOSED  |
+                              +---------+                   +---------+
+
+                      TCP Connection State Diagram
+                               Figure 6.
+
+
+3 timer队列的管理，所须处理的事件的类型
+   事件类型：发送（SEND）、重发（RETRANSMIT）、探询（PERSIST）、
+             删除（DELETE)
+
+4 滑动窗口的管理
+   滑动窗口的概念见协议5、6。
+ 　 　　　　 　 　  　　　　   　　 　       　
+   发送序列空间的模型：
+             |<-------- sbcount --------->|
+   ———————————————————————————
+   | 已确认的|  已发送，    |  还未发送的 |  尚未生成的 |
+   |         | 但未被确认的 |             |             |
+   ———————————————————————————
+             ^              ^             ^
+             |              |             |
+            suna           snext       suna+sbcount
+   suna    表示未被确认的第一个字节
+   snext   表示下一次要发送的第一个字节
+ 　 　　　　 　 　  　　　　   　　 　       　
+   以下是发送缓冲区的模型：
+   ------------>|            |<----------- sbcount ------
+   ———————————————————————————
+   | 尚未发送   | 未使用的   | 已发送，    |  尚未发送  |
+   |（第二部分）| 缓冲区空间 | 但未被确认的|（第一部分）|
+   ———————————————————————————
+                ^            ^
+                |            |
+               end         sbstart
+ 　 　　　　 　 　  　　　　   　　 　       　
+   |<------------------- sbsize ----------------------->|
+ 　 　　　　 　 　  　　　　   　　 　       　
+   有效数据在环行TCP输出缓冲区中首尾相接的存放。总体思想就是
+   走到尽头就绕回来。
+   sbstart    表示未被确认的第一个字节
+   sbcount    表示有效数据的长度
+   sbsize     表示缓冲区的长度
+ 　 　　　　 　 　  　　　　   　　 　       　
+   接受窗口的情况类似。
+ 　 　　　　 　 　  　　　　   　　 　       　
+5 三次握手协议
+  下面是三次握手建立连接的过程。
+  The synchronization requires each side to send it's own initial
+  sequence number and to receive a confirmation of it in acknowledgment
+  from the other side.  Each side must also receive the other side's
+  initial sequence number and send a confirming acknowledgment.
+
+    1) A --> B  SYN my sequence number is X
+    2) A <-- B  ACK your sequence number is X
+    3) A <-- B  SYN my sequence number is Y
+    4) A --> B  ACK your sequence number is Y
+
+ 　 　　　　 　 　  　　　　   　　 　       　
+6 关闭连接过程
+  关闭连接也使用三次握手。
+  如果某一方（A方）先发出FIN，则过程如下：
+      TCP A                                                TCP B
+
+  1.  ESTABLISHED                                          ESTABLISHED
+
+  2.  (Close)
+      FIN-WAIT-1  --> <SEQ=100><ACK=300><CTL=FIN,ACK>  --> CLOSE-WAIT
+
+  3.  FIN-WAIT-2  <-- <SEQ=300><ACK=101><CTL=ACK>      <-- CLOSE-WAIT
+
+  4.                                                       (Close)
+      TIME-WAIT   <-- <SEQ=300><ACK=101><CTL=FIN,ACK>  <-- LAST-ACK
+
+  5.  TIME-WAIT   --> <SEQ=101><ACK=301><CTL=ACK>      --> CLOSED
+
+  6.  (2 MSL)
+      CLOSED
+
+                         Normal Close Sequence
+
+                               Figure 13.
+
+ 　 　　　　 　 　  　　　　   　　 　       　
+   如果双方一起发FIN，则过程如下：
+
+      TCP A                                                TCP B
+
+  1.  ESTABLISHED                                          ESTABLISHED
+
+  2.  (Close)                                              (Close)
+      FIN-WAIT-1  --> <SEQ=100><ACK=300><CTL=FIN,ACK>  ... FIN-WAIT-1
+                  <-- <SEQ=300><ACK=100><CTL=FIN,ACK>  <--
+                  ... <SEQ=100><ACK=300><CTL=FIN,ACK>  -->
+
+  3.  CLOSING     --> <SEQ=101><ACK=301><CTL=ACK>      ... CLOSING
+                  <-- <SEQ=301><ACK=101><CTL=ACK>      <--
+                  ... <SEQ=101><ACK=301><CTL=ACK>      -->
+
+  4.  TIME-WAIT                                            TIME-WAIT
+      (2 MSL)                                              (2 MSL)
+      CLOSED                                               CLOSED
+
+                      Simultaneous Close Sequence
+    其中MSL 为分组在网络中存在的最长时间。
+
+ 　 　　　　 　 　  　　　　   　　 　       　
+7 什么叫tcb，连接和tcb的关系，如何区分不同的连接
+   TCB称为传输控制块，记录连接的信息。一个TCB对应一个连接，一个连接
+  中要记录双方的ip和端口号，用于区分不同的连接。
+ 　 　　　　 　 　  　　　　   　　 　       　
+8 tcp报文中，control bit的含义
+   参见教材p406（中文版）。
+   URG - 该位为1表示当前包含紧急数据。
+   ACK - 该位为1表示当前报文确认序号有效（除了client方第一个分组外，该位总为1）
+。
+   PSH - 该位为1表示当前报文为带有PUSH标志的数据。
+   RST - 复位标志。
+   SYN - 该位为1表示当前报文第一个报文。
+   FIN - 该位为1表示对方已经没有数据要发送。
+ 　 　　　　 　 　  　　　　   　　 　       　
+   rfc793 中说明：
+    URG:  Urgent Pointer field significant
+    ACK:  Acknowledgment field significant
+    PSH:  Push Function
+    RST:  Reset the connection
+    SYN:  Synchronize sequence numbers
+    FIN:  No more data from sender
+ 　 　　　　 　 　  　　　　   　　 　       　
+9 tcp报文中，校验和计算的特点。
+    tcp的校验和（16位）计算tcp伪首部和报文段的校验和。伪首部的定义如下：
+ 　 　　　　 　 　  　　　　   　　 　       　
+                     +--------+--------+--------+--------+
+                     |           Source Address          |
+                     +--------+--------+--------+--------+
+                     |         Destination Address       |
+                     +--------+--------+--------+--------+
+                     |  zero  |  PTCL  |    TCP Length   |
+                     +--------+--------+--------+--------+
+ 　 　　　　 　 　  　　　　   　　 　       　
+  其中PTCL为IP使用的协议类型值。
+      将报文段看成一组16位的整数，相加得到校验和。
+ 　 　　　　 　 　  　　　　   　　 　       　
+ 　 　　　　 　 　  　　　　   　　 　       　
+--—-——--——-———-——---—-——-—----—-—-
+※ 修改:．DragonCat 于 Jun 15 22:30:04 修改本文．[FROM: 10.9.21.21]
+※ 来源:．酒井BBS bbs.cs.tsinghua.edu.cn．[FROM: 10.9.21.21]
