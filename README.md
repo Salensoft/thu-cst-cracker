@@ -1,7 +1,8 @@
 # 清华大学计算机系课程攻略
 
-[![GitHub watchers](https://img.shields.io/github/watchers/trinkle23897/thu-cst-cracker.svg?style=social&label=Watch)](https://github.com/trinkle23897/thu-cst-cracker)
-[![GitHub stars](https://img.shields.io/github/stars/trinkle23897/thu-cst-cracker.svg?style=social&label=Stars)](https://github.com/trinkle23897/thu-cst-cracker)
+[![GitHub watchers](https://img.shields.io/github/watchers/trinkle23897/thu-cst-cracker.svg?style=social&label=Watch)](https://github.com/Trinkle23897/thu-cst-cracker/watchers)
+[![GitHub stars](https://img.shields.io/github/stars/trinkle23897/thu-cst-cracker.svg?style=social&label=Stars)](https://github.com/Trinkle23897/thu-cst-cracker/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/trinkle23897/thu-cst-cracker.svg?style=social&label=Forks)](https://github.com/Trinkle23897/thu-cst-cracker/network/members)
 
 受[浙江大学相关项目](https://github.com/QSCTech/zju-icicles)启发，创立了本项目。
 
@@ -9,7 +10,7 @@
 
 如果想下载部分文件夹，可使用 https://minhaskamal.github.io/DownGit/#/home
 
-感谢对本项目贡献的同学（排名按照commit先后顺序）：[Trinkle23897](https://github.com/trinkle23897)（翁家翌，2016）、[LJSthu](https://github.com/ljsthu)（刘家硕，2016）、[shyoshyo](https://github.com/shyoshyo)（雷凯翔，2014）、[wuhaozhe](https://github.com/wuhaozhe)(吴昊哲，2015)、[choumartin1234](https://github.com/choumartin1234)（周恩贤，2018）、……以及电脑前的您！
+感谢对本项目贡献的同学（排名按照commit先后顺序）：[Trinkle23897](https://github.com/trinkle23897)（翁家翌，2016）、[LJSthu](https://github.com/ljsthu)（刘家硕，2016）、[shyoshyo](https://github.com/shyoshyo)（雷凯翔，2014）、[wuhaozhe](https://github.com/wuhaozhe)（吴昊哲，2015）、[choumartin1234](https://github.com/choumartin1234)（周恩贤，2018）、[FztTony](https://github.com/FztTony/)（傅舟涛，2017）、……以及电脑前的您！
 
 ## 前言
 
@@ -35,11 +36,7 @@
 - 历年试卷和复习资料：exam/
 - 开卷考试 A4 纸：a4paper/
 
-等等。目前项目已经覆盖大多数贵系的课程。
-
-比如我是2018年上网络原理的n+e，想在网络原理上传一个自己的作业，即在网络原理文件夹下新建文件夹`2018_n+e`，然后往里面填东西即可（当然，欢迎往对应的`readme.md`里面放自己的GitHub对应仓库链接~）
-
-目前具体已涵盖如下课程：（课程分类按照实际情况而不是按照培养方案）
+等等。目前具体已涵盖课程如下：（课程分类按照实际情况而不是按照培养方案）
 
 - 大一上：
 
@@ -122,7 +119,7 @@
 
 微信群大多为年级和专业所分隔，无法长期共同地保有，况且群文件也缺乏组织。
 
-GitHub 项目可以使用目录进行文件组织，并且每个目录均可以在显示文件列表的同时显示一个 README，十分适合本项目的需求。
+GitHub 项目可以使用目录进行文件组织，并且每个目录均可以在显示文件列表的同时显示一个 readme，十分适合本项目的需求。
 
 GitHub 带有便捷的 Issue 和 Pull Request 协作功能，并且可以方便地对贡献的质量进行监督和调整。
 
@@ -148,9 +145,11 @@ Issue、PR、纠错、资料、选课/考试攻略，完全欢迎！来自大家
 
 2.2. 上传文件到新文件夹：打开任意文件夹，点击绿色Download按钮旁的upload，**把浏览器地址栏中文件夹名称改为你想要新建的文件夹名称，然后回车**，上传你的文件。
 
-3.1 提交 PR：上传完文件到个人仓库之后，点击 `Pull Request` 即可。留意一下项目的文件组织喔。
+3.1 提交 PR：上传完文件到个人仓库之后，点击 `Pull Request` 即可。请留意一下项目的文件组织。
 
-3.2 或者也可以直接附加在 [Issue](https://github.com/Trinkle23897/thu-cst-cracker/issues/new) 中，由维护者进行添加。
+3.2 也可以直接附加在 [Issue](https://github.com/Trinkle23897/thu-cst-cracker/issues/new) 中，由维护者进行添加。
+
+比如我是2018年上网络原理的n+e，想在网络原理上传一个自己的作业，即在网络原理文件夹下新建文件夹`2018_n+e`，然后往里面填东西即可（当然，欢迎往对应的`readme.md`里面放自己的GitHub对应仓库链接~）
 
 ## 许可
 
