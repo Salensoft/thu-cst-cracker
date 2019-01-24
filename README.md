@@ -10,7 +10,7 @@
 
 如果想下载部分文件夹，可使用 https://minhaskamal.github.io/DownGit/#/home
 
-感谢对本项目贡献的同学（排名按照commit先后顺序）：[Trinkle23897](https://github.com/trinkle23897)（翁家翌，2016）、[LJSthu](https://github.com/ljsthu)（刘家硕，2016）、[shyoshyo](https://github.com/shyoshyo)（雷凯翔，2014）、[wuhaozhe](https://github.com/wuhaozhe)（吴昊哲，2015）、[choumartin1234](https://github.com/choumartin1234)（周恩贤，2018）、[FztTony](https://github.com/FztTony/)（傅舟涛，2017）、[VicaYang](https://github.com/VicaYang/)（杨维铠，2015）、……以及电脑前的您！
+感谢对本项目贡献的同学（排名按照commit先后顺序）：[Trinkle23897](https://github.com/trinkle23897)（翁家翌，2016）、[LJSthu](https://github.com/ljsthu)（刘家硕，2016）、[shyoshyo](https://github.com/shyoshyo)（雷凯翔，2014）、[wuhaozhe](https://github.com/wuhaozhe)（吴昊哲，2015）、[choumartin1234](https://github.com/choumartin1234)（周恩贤，2018）、[FztTony](https://github.com/FztTony/)（傅舟涛，2017）、[VicaYang](https://github.com/VicaYang/)（杨维铠，2015）[duzx16](https://github.com/duzx16/)（杜政晓，2016）、……以及电脑前的您！
 
 ## 前言
 
@@ -88,8 +88,8 @@
 | 计算机组成原理 | 人工神经网络       |
 | 计算机网络原理 | 计算机网络安全技术 |
 | 编译原理       | 人机交互理论与技术 |
-| 信号处理原理   |                    |
-| 软件工程       |                    |
+| 信号处理原理   | VLSI设计导论  |
+| 软件工程       | 数据库系统概论 |
 
 - 大三下：
 
