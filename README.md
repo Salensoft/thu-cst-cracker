@@ -1,6 +1,10 @@
 # 清华大学计算机系课程攻略
 
-[![star this repo](http://githubbadges.com/star.svg?user=trinkle23897&repo=thu-cst-cracker&style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/stargazers)[![fork this repo](http://githubbadges.com/fork.svg?user=trinkle23897&repo=thu-cst-cracker&style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/network/members)[![Pending Pull-Requests](http://githubbadges.herokuapp.com/trinkle23897/thu-cst-cracker/pulls.svg?style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/pulls)[![Open Issues](http://githubbadges.herokuapp.com/trinkle23897/thu-cst-cracker/issues.svg?style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/issues)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Trinkle23897/thu-cst-cracker/pulls)
+[![star this repo](http://githubbadges.com/star.svg?user=trinkle23897&repo=thu-cst-cracker&style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/stargazers)
+[![fork this repo](http://githubbadges.com/fork.svg?user=trinkle23897&repo=thu-cst-cracker&style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/network/members)
+[![Pending Pull-Requests](http://githubbadges.herokuapp.com/trinkle23897/thu-cst-cracker/pulls.svg?style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/pulls)
+[![Open Issues](http://githubbadges.herokuapp.com/trinkle23897/thu-cst-cracker/issues.svg?style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Trinkle23897/thu-cst-cracker/pulls)
 
 
 受[浙江大学相关项目](https://github.com/QSCTech/zju-icicles)启发，创立了本项目。
@@ -136,7 +140,7 @@ Issue、PR、纠错、资料、选课/考试攻略，完全欢迎！来自大家
 
 对于教师的评价可写在对应课程的`readme.md`中。如果想上传课件（请确保无版权问题），推荐使用pdf格式，避免系统差。
 
-由于本项目体积很大（约2G），故可以采用在Github Web端直接上传的方式，具体操作如下：
+由于本项目体积很大（约3G），故可以采用在Github Web端直接上传的方式，具体操作如下：
 
 1. 首先Fork本项目，点击右上角的Fork按键即可。
 
