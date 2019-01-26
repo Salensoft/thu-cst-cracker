@@ -1,8 +1,7 @@
 # 清华大学计算机系课程攻略
 
-[![GitHub watchers](https://img.shields.io/github/watchers/trinkle23897/thu-cst-cracker.svg?style=social&label=Watch)](https://github.com/Trinkle23897/thu-cst-cracker/watchers)
-[![GitHub stars](https://img.shields.io/github/stars/trinkle23897/thu-cst-cracker.svg?style=social&label=Stars)](https://github.com/Trinkle23897/thu-cst-cracker/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/trinkle23897/thu-cst-cracker.svg?style=social&label=Forks)](https://github.com/Trinkle23897/thu-cst-cracker/network/members)
+[![star this repo](http://githubbadges.com/star.svg?user=trinkle23897&repo=thu-cst-cracker&style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/stargazers)[![fork this repo](http://githubbadges.com/fork.svg?user=trinkle23897&repo=thu-cst-cracker&style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/network/members)[![Pending Pull-Requests](http://githubbadges.herokuapp.com/trinkle23897/thu-cst-cracker/pulls.svg?style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/pulls)[![Open Issues](http://githubbadges.herokuapp.com/trinkle23897/thu-cst-cracker/issues.svg?style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/issues)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Trinkle23897/thu-cst-cracker/pulls)
+
 
 受[浙江大学相关项目](https://github.com/QSCTech/zju-icicles)启发，创立了本项目。
 
@@ -10,7 +9,7 @@
 
 如果想下载部分文件夹，可使用 https://minhaskamal.github.io/DownGit/#/home
 
-感谢对本项目贡献的同学（排名按照commit先后顺序）：[Trinkle23897](https://github.com/trinkle23897)（翁家翌，2016）、[LJSthu](https://github.com/ljsthu)（刘家硕，2016）、[shyoshyo](https://github.com/shyoshyo)（雷凯翔，2014）、[wuhaozhe](https://github.com/wuhaozhe)（吴昊哲，2015）、[choumartin1234](https://github.com/choumartin1234)（周恩贤，2018）、[FztTony](https://github.com/FztTony/)（傅舟涛，2017）、[VicaYang](https://github.com/VicaYang/)（杨维铠，2015）、[duzx16](https://github.com/duzx16/)（杜政晓，2016）、[zerotrac](https://github.com/zerotrac)（陈书新，2015）、……以及电脑前的您！
+感谢对本项目贡献的同学（排名按照commit先后顺序）：[Trinkle23897](https://github.com/trinkle23897)（翁家翌，2016）、[LJSthu](https://github.com/ljsthu)（刘家硕，2016）、[shyoshyo](https://github.com/shyoshyo)（雷凯翔，2014）、[wuhaozhe](https://github.com/wuhaozhe)（吴昊哲，2015）、[choumartin1234](https://github.com/choumartin1234)（周恩贤，2018）、[FztTony](https://github.com/FztTony/)（傅舟涛，2017）、[VicaYang](https://github.com/VicaYang/)（杨维铠，2015）、[duzx16](https://github.com/duzx16/)（杜政晓，2016）、[zerotrac](https://github.com/zerotrac)（陈书新，2015）、沈天成（2014）、……以及电脑前的您！
 
 ## 前言
 
