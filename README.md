@@ -1,11 +1,10 @@
 # 清华大学计算机系课程攻略
 
-[![star this repo](http://githubbadges.com/star.svg?user=trinkle23897&repo=thu-cst-cracker&style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/stargazers)
-[![fork this repo](http://githubbadges.com/fork.svg?user=trinkle23897&repo=thu-cst-cracker&style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/network/members)
-[![Pending Pull-Requests](http://githubbadges.herokuapp.com/trinkle23897/thu-cst-cracker/pulls.svg?style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/pulls)
-[![Open Issues](http://githubbadges.herokuapp.com/trinkle23897/thu-cst-cracker/issues.svg?style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/issues)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Trinkle23897/thu-cst-cracker/pulls)
-
+[![](https://img.shields.io/github/watchers/trinkle23897/thu-cst-cracker.svg?style=flat)](https://github.com/Trinkle23897/THU-CST-Cracker/watchers)
+[![](https://img.shields.io/github/stars/trinkle23897/thu-cst-cracker.svg?style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/stargazers)
+[![](https://img.shields.io/github/forks/trinkle23897/thu-cst-cracker.svg?style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/network/members)
+[![](https://img.shields.io/github/issues-pr-closed-raw/trinkle23897/thu-cst-cracker.svg?style=flat)](https://github.com/Trinkle23897/thu-cst-cracker/issues)
+![](https://img.shields.io/github/repo-size/trinkle23897/thu-cst-cracker.svg?style=flat)
 
 受[浙江大学相关项目](https://github.com/QSCTech/zju-icicles)启发，创立了本项目。
 
@@ -108,10 +107,11 @@
 |                | 存储技术基础       |
 |                | 数据库专题训练     |
 |                | 计算机网络专题训练 |
+|                | 系统分析与控制    |
 
 
 - 大三小学期：并行计算机体系结构与编程、保研考试
-- 大四上：网络安全工程与实践、嵌入式系统
+- 大四上：网络安全工程与实践、嵌入式系统、现代控制技术
 - 研究生课：组合数学
 
 电脑前的您请不要吝啬，您的作品一旦被合并至该仓库中，有可能会被无数学弟仰慕。我们需要您的PR！
