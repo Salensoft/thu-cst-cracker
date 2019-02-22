@@ -12,7 +12,7 @@
 
 如果想下载部分文件夹，可使用 https://minhaskamal.github.io/DownGit/#/home
 
-感谢对本项目贡献的同学（排名按照commit先后顺序）：[Trinkle23897](https://github.com/trinkle23897)（翁家翌，2016）、[LJSthu](https://github.com/ljsthu)（刘家硕，2016）、[shyoshyo](https://github.com/shyoshyo)（雷凯翔，2014）、[wuhaozhe](https://github.com/wuhaozhe)（吴昊哲，2015）、[choumartin1234](https://github.com/choumartin1234)（周恩贤，2018）、[FztTony](https://github.com/FztTony/)（傅舟涛，2017）、[VicaYang](https://github.com/VicaYang/)（杨维铠，2015）、[duzx16](https://github.com/duzx16/)（杜政晓，2016）、[zerotrac](https://github.com/zerotrac)（陈书新，2015）、沈天成（2014）、……以及电脑前的您！
+感谢对本项目贡献的同学（排名按照commit先后顺序）：[Trinkle23897](https://github.com/trinkle23897)（翁家翌，2016）、[LJSthu](https://github.com/ljsthu)（刘家硕，2016）、[shyoshyo](https://github.com/shyoshyo)（雷凯翔，2014）、[wuhaozhe](https://github.com/wuhaozhe)（吴昊哲，2015）、[choumartin1234](https://github.com/choumartin1234)（周恩贤，2018）、[FztTony](https://github.com/FztTony/)（傅舟涛，2017）、[VicaYang](https://github.com/VicaYang/)（杨维铠，2015）、[duzx16](https://github.com/duzx16/)（杜政晓，2016）、[zerotrac](https://github.com/zerotrac)（陈书新，2015）、沈天成（2014）、[gjz010](https://github.com/gjz010/)（郭敬哲，2016）……以及电脑前的您！
 
 ## 前言
 
